@@ -15,5 +15,5 @@
 - [ ] I want to view a task to show task's details.
 - [ ] I want to delete a task to lessen my unnecessary daily tasks.
 - [ ] I want to view my tasks for today for me to remind what are my priorities for today.
-- [ ] I want to create my account so that I can have my own credentials.
-- [ ] I want to login my account so that I can access my acount and link my own tasks.
+- [x] I want to create my account so that I can have my own credentials.
+- [ ] I want to login my account so that I can access my account and link my own tasks.
