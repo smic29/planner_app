@@ -13,11 +13,12 @@
   <body>
     <%if user_signed_in? %>
     <header>
-      <%= render 'shared/navbar'%>
+      <%= render 'shared/navbar' %>
     </header>
     <% end %>
     <main>
       <%= yield %>
     </main>
+    <%= render 'shared/modal' %>
   </body>
 </html>

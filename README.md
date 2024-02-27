@@ -5,6 +5,7 @@
 - Ruby on Rails
 - HTML/CSS/JavaScript
 - Bootstrap
+- Postgres
 
 ## User Stories
 - [ ] I want to create a category that can be used to organize my tasks.

@@ -1,0 +1,22 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title fs-6" id="exampleModalLabel">Login or sign up</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= turbo_frame_tag "login_signup_frame" do %>
+        <div>
+            <%= link_to "I'm already a user", new_user_session_path, class:"btn btn-outline-primary" %>
+            <%= link_to "Sign me up!", new_user_registration_path, class:"btn btn-outline-success" %>
+        </div>
+        <% end %>
+      </div>
+      <%# <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> %>
+    </div>
+  </div>
+</div>
