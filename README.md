@@ -18,3 +18,7 @@
 - [ ] I want to view my tasks for today for me to remind what are my priorities for today.
 - [x] I want to create my account so that I can have my own credentials.
 - [ ] I want to login my account so that I can access my account and link my own tasks.
+
+## TODO
+- [ ] Fix sign up validation errors. 02/27/24
+- [ ] Category Model & Task Model.
