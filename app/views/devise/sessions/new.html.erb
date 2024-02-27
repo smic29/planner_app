@@ -1,6 +1,12 @@
- <%= turbo_frame_tag "login_signup_frame" do %>
-  
+ <div class="container mt-5">
+
+ <%= turbo_frame_tag "login_signup_frame" do %> 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
     <div class="field form-floating">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-3", placeholder:"email" %>
       <%= f.label :email %>
@@ -25,3 +31,4 @@
 
   <%= render "devise/shared/links" %>
 <% end %>
+ </div>
