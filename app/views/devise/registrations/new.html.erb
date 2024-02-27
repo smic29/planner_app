@@ -1,31 +1,35 @@
-<%= turbo_frame_tag "login_signup_frame" do %>
-  <h5>Sign up</h5>
+<div class="container mt-5">
+  <%= turbo_frame_tag "login_signup_frame" do %>
+    <h5>Sign up</h5>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field form-floating">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-3", placeholder:"email" %>
-      <%= f.label :email %>
-    </div>
+      <div class="field form-floating">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-3", placeholder:"email" %>
+        <%= f.label :email %>
+      </div>
 
-    <div class="field form-floating">
-      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"password" %>
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <small class="ms-1">(<%= @minimum_password_length %> characters minimum)</small>
-      <% end %><br />
-    </div>
+      <div class="field form-floating">
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"password" %>
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <small class="ms-1">(<%= @minimum_password_length %> characters minimum)</small>
+        <% end %><br />
+      </div>
 
-    <div class="field form-floating">
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mb-3 mt-3", placeholder:"confirm" %>
-      <%= f.label :password_confirmation %>
-    </div>
+      <div class="field form-floating">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control mb-3 mt-3", placeholder:"confirm" %>
+        <%= f.label :password_confirmation %>
+      </div>
 
-    <div class="actions text-center">
-      <%= f.submit "Sign up", class:"btn btn-primary", data: { turbo_frame: "_top" } %>
-    </div>
+      <div class="actions text-center">
+        <%= f.submit "Sign up", class:"btn btn-primary", data: { turbo_frame: "_top" } %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
   <% end %>
 
-  <%= render "devise/shared/links" %>
-<% end %>
+  <%= link_to "Back", root_path, class:"btn btn-primary mt-5" %>
+</div>
