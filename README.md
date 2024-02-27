@@ -21,4 +21,5 @@
 
 ## TODO
 - [ ] Fix sign up validation errors. 02/27/24
+- [ ] Turn notice into a dismissable alert. Look into what can be done for alerts.
 - [ ] Category Model & Task Model.
