@@ -11,7 +11,10 @@
   </head>
 
   <body>
-    <%= notice %>
+    <% if notice %>
+      <%= render 'shared/toast' %>
+    <% end %>
+  
     <%if user_signed_in? %>
     <header>
       <%= render 'shared/navbar' %>
@@ -21,5 +24,8 @@
       <%= yield %>
     </main>
     <%= render 'shared/modal' %>
+    <script>
+      $('.toast').toast('show');
+    </script>
   </body>
 </html>

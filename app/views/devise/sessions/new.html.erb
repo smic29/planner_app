@@ -25,7 +25,7 @@
     <% end %>
 
     <div class="actions text-center">
-      <%= f.submit "Log in", class:"btn btn-primary", data: { turbo_frame: "_top" } %>
+      <%= f.submit "Log in", class:"btn btn-primary", data: { turbo_frame: "_top", "turbo-visit-control": "reload" } %>
     </div>
   <% end %>
 

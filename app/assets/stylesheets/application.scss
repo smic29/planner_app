@@ -20,3 +20,10 @@
 .home-main-container {
     height: 100vh;
 }
+
+.toast {
+    position: fixed;
+    z-index: 1050;
+    left: 35%;
+    top: 5%;
+}
