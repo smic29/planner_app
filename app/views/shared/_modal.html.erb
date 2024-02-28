@@ -5,11 +5,19 @@
         <h3 class="modal-title fs-6" id="loginModalLabel">Login or sign up</h3>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <%= turbo_frame_tag "login_signup_frame" do %>
+      <div class="modal-body", data-controller="hello">
+        <ul class="nav nav-tabs mb-3">
+          <li class="nav-item">
+            <%= link_to "I'm already a user", new_user_session_path, class:"nav-link active", data: { turbo_frame: :login_signup_frame } %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign me up!", new_user_registration_path, class:"nav-link", data: { turbo_frame: :login_signup_frame }%>
+          </li>
+        </ul>
+        <%= turbo_frame_tag "login_signup_frame", src: new_user_session_path do %>
         <div>
-            <%= link_to "I'm already a user", new_user_session_path, class:"btn btn-outline-primary" %>
-            <%= link_to "Sign me up!", new_user_registration_path, class:"btn btn-outline-success" %>
+            
+            
         </div>
         <% end %>
       </div>
