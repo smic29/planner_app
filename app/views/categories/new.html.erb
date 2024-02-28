@@ -22,7 +22,7 @@
         </div>
 
         <div class="actions">
-            <%= form.submit %>
+            <%= form.submit data: { turbo_frame: "_top" } %>
         </div>
     <% end %>
     <%= link_to 'Back', user_categories_path %>

@@ -23,7 +23,8 @@
 - [x] Fix sign up validation errors. 02/27/24
 - [x] Turn notice into a dismissable alert. Look into what can be done for alerts.
 - [ ] Category Model & Task Model.
-- [ ] Find out why notices are not appearing when in Turbo Frame
+- [x] Find out why notices are not appearing when in Turbo Frame
+  - Listed #2 in Issues Encountered.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
@@ -33,3 +34,8 @@
       html_tag
     }
     ```
+2. `:notice` was not being updated properly when a CRUD action was performed within a turbo-frame. The work around I did for this was to just have the buttons for new submit and delete to default to the root page. See code:
+```ruby
+, data: { turbo_frame: "_top" }
+```
+This was added to the buttons that would cause a redirect based on the controller. Doing so allowed notices to happen once more.
