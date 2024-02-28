@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "category_list" do %>
+    <h1>Categories</h1>
+
+    <% if @categories.any? %>
+        <ul>
+            <% @categories.each do |category| %>
+            <li class="d-flex justify-content-start">
+                <%= category.name %>||
+                <%= button_to "Delete", [current_user, category ], method: :delete, class:"btn btn-outline-danger" %>
+            </li>
+            <% end %>
+        </ul>
+    <% else %>
+        <p>No categories found.</p>
+    <% end %>
+<%= link_to 'New Category', new_user_category_path %>
+
+
+<% end %>

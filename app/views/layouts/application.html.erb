@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+  
   </head>
 
   <body>
@@ -19,11 +20,23 @@
     <header>
       <%= render 'shared/navbar' %>
     </header>
+    <main>
+      <% if current_user %>
+          <p>Welcome, User <%= current_user.id %>: <%= current_user.email %></p>
+      <% end %>
+      <%= turbo_frame_tag "category_list", src: user_categories_path(current_user.id) do %>
+      <div>
+   
+      </div>
+      <% end %>
+    </main>
     <% end %>
+    <% unless user_signed_in? %>
     <main>
       <%= yield %>
     </main>
     <%= render 'shared/modal' %>
+    <% end %>
     <script>
       $('.toast').toast('show');
     </script>
