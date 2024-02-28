@@ -34,8 +34,9 @@
       html_tag
     }
     ```
-2. `:notice` was not being updated properly when a CRUD action was performed within a turbo-frame. The work around I did for this was to just have the buttons for new submit and delete to default to the root page. See code:
-```ruby
-, data: { turbo_frame: "_top" }
-```
-This was added to the buttons that would cause a redirect based on the controller. Doing so allowed notices to happen once more.
+2. `:notice` was not being updated properly when a CRUD action was performed within a turbo-frame. The work around I did for this was to just have the buttons for new submit and delete  to default to the root page. See code:
+    ```ruby
+    , data: { turbo_frame: "_top" }
+    ```
+    This was added to the buttons that would cause a redirect based on the controller. Doing so allowed notices to happen once more.
+    Feels like a work around at this point, and will be looking to update after learning more about Hotwire.
