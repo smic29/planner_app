@@ -8,7 +8,7 @@
 - Postgres
 
 ## User Stories
-- [ ] I want to create a category that can be used to organize my tasks.
+- [x] I want to create a category that can be used to organize my tasks.
 - [ ] I want to edit a category to update the category's details.
 - [ ] I want to view a category to show the category's details.
 - [ ] I want to create a task for a specific category so that I can organize tasks quicker.
@@ -23,8 +23,11 @@
 - [x] Fix sign up validation errors. 02/27/24
 - [x] Turn notice into a dismissable alert. Look into what can be done for alerts.
 - [ ] Category Model & Task Model.
+  - [x] Category Model
 - [x] Find out why notices are not appearing when in Turbo Frame
   - Listed #2 in Issues Encountered.
+- [ ] Look into the need for being able to delete Categories?
+- [ ] Fix main page layout
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
