@@ -12,7 +12,8 @@ export default class extends Controller {
   
   updateActiveLinks() {
     const links = this.element.querySelectorAll(".nav-link")
-    const frame = this.element.querySelector("#login_signup_frame")
+    // const frame = this.element.querySelector("#login_signup_frame") I was trying to use frame.src to check, but it wasn't working.
+    // This works right now and is a bit simple, but I'll get back to it once I understand hotwire more. maybe...
     
     links.forEach(link => {
       
