@@ -18,6 +18,9 @@ module PlannerApp
 
     # Configuration for the application, engines, and railties goes here.
     #
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #

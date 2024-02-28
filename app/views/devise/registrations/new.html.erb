@@ -1,10 +1,10 @@
 <div class="container mt-5">
   <%= turbo_frame_tag "login_signup_frame" do %>
     <h5>Sign up</h5>
-
+    
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-
+      
       <div class="field form-floating">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control mb-3", placeholder:"email" %>
         <%= f.label :email %>

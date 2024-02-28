@@ -20,6 +20,15 @@
 - [ ] I want to login my account so that I can access my account and link my own tasks.
 
 ## TODO
-- [ ] Fix sign up validation errors. 02/27/24
+- [x] Fix sign up validation errors. 02/27/24
 - [ ] Turn notice into a dismissable alert. Look into what can be done for alerts.
 - [ ] Category Model & Task Model.
+
+## Issues Encountered
+1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
+   Fix was to place below code in `config/application.rb`
+   ```ruby
+   config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
+    ```
