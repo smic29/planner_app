@@ -1,16 +1,16 @@
 <%= turbo_frame_tag "category_list" do %>
-    <h1>Categories</h1>
+    <div class="d-grid gap-2 shadow rounded p-3">
+        <h4 class="text-center">Your categories</h4>
 
-    <% if @categories.any? %>
-        <ul>
-            <% @categories.each do |category| %>
-                <%= render 'categories/list', category: category %>
-            <% end %>
-        </ul>
-    <% else %>
-        <p>No categories found.</p>
-    <% end %>
-<%= link_to 'New Category', new_user_category_path %>
-
-
+        <% if @categories.any? %>
+            <div>
+                <% @categories.each do |category| %>
+                    <%= render 'categories/list', category: category %>
+                <% end %>
+            </div>
+        <% else %>
+            <p>No categories found.</p>
+        <% end %>
+    <%= link_to 'New Category', new_user_category_path, class:"btn btn-block btn-outline-success w-full" %>
+    </div>
 <% end %>
