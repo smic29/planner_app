@@ -10,19 +10,20 @@
                 </ul>
             </div>
         <% end %>
+        <div class="d-grid gap-2">
+            <div class="field form-floating">
+                <%= form.text_field :name, required:true, autocomplete:"off", class:"form-control", placeholder:"title" %>
+                <%= form.label :name, class:"form-label small" %>
+            </div>
 
-        <div class="field">
-            <%= form.label :name %>
-            <%= form.text_field :name, required:true %>
-        </div>
+            <div class="field form-floating">
+                <%= form.text_area :description, class:"form-control", placeholder:"description", style:"height:100px" %>
+                <%= form.label :description, class:"form-label small" %>
+            </div>
 
-        <div class="field">
-            <%= form.label :description %>
-            <%= form.text_area :description %>
-        </div>
-
-        <div class="actions">
-            <%= form.submit data: { turbo_frame: "_top" } %>
+            <div class="actions d-grid">
+                <%= form.submit data: { turbo_frame: "_top" }, class: "btn btn-outline-success" %>
+            </div>
         </div>
     <% end %>
     <%= link_to 'Back', user_categories_path %>
