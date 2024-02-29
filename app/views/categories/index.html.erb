@@ -1,4 +1,6 @@
+
 <%= turbo_frame_tag "category_list" do %>
+<%= turbo_stream_from :cat_list %>
     <div class="d-grid gap-2 shadow rounded p-3">
         <h4 class="text-center">Your categories</h4>
 
