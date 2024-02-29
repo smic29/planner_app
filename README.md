@@ -24,10 +24,12 @@
 - [x] Turn notice into a dismissable alert. Look into what can be done for alerts.
 - [ ] Category Model & Task Model.
   - [x] Category Model
+  - [ ] Task Model
 - [x] Find out why notices are not appearing when in Turbo Frame
   - Listed #2 in Issues Encountered.
 - [ ] Look into the need for being able to delete Categories?
-- [ ] Fix main page layout
+- [x] Fix main page layout
+- [ ] Find a way to fix creation so that it happens with Turbo Stream. Modal? Div appears somewhere on screen?
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
