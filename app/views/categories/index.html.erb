@@ -4,10 +4,7 @@
     <% if @categories.any? %>
         <ul>
             <% @categories.each do |category| %>
-            <li class="d-flex justify-content-start">
-                <%= category.name %>||
-                <%= button_to "Delete", [current_user, category ], method: :delete, class:"btn btn-outline-danger", data: { turbo_frame: "_top" } %>
-            </li>
+                <%= render 'categories/list', category: category %>
             <% end %>
         </ul>
     <% else %>

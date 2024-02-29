@@ -25,7 +25,12 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to user_categories_path, notice: 'Category was successfully deleted.'
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@category), notice: "Category Deleted" }
+      format.html { redirect_to user_categories_path, notice: "Category was successfully deleted."}
+    end
+    # redirect_to user_categories_path, notice: 'Category was successfully deleted.'
   end
 
   def new
