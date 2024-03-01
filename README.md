@@ -29,7 +29,9 @@
   - Listed #2 in Issues Encountered.
 - [ ] Look into the need for being able to delete Categories?
 - [x] Fix main page layout
-- [ ] Find a way to fix creation so that it happens with Turbo Stream. Modal? Div appears somewhere on screen?
+- [x] Find a way to fix creation so that it happens with Turbo Stream. Modal? Div appears somewhere on screen?
+  - Went with a modal that closes after successful submission.
+- [ ] Broadcast issues with append.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
@@ -45,3 +47,48 @@
     ```
     This was added to the buttons that would cause a redirect based on the controller. Doing so allowed notices to happen once more.
     Feels like a work around at this point, and will be looking to update after learning more about Hotwire.
+
+3. Had troubles with implementing a modal for adding a new category. What I did was a button within the category list that would open up the modal which contains the turbo frame for new.html.erb
+  ```ruby
+  <div class="modal fade" id="signedInModal" tabindex="-1" aria-labelledby="signedInModalLabel" aria-hidden="true" data-controller="new-category-modal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="signedInModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= turbo_frame_tag "inside_modal", src: new_user_category_path(current_user) do %>
+            
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
+  ```
+  At this point, it's like this, but I still have plans in the future of reusing this modal. Having `new_user_category_path` is just the current one that works. While that solved the modal displaying issue, the main one I encountered was having the modal close after successfully creating a form. And for that I had to use a stimulus controller: 
+  ```js 
+  import { Controller } from "@hotwired/stimulus"
+
+  // Connects to data-controller="new-category-modal"
+  export default class extends Controller {
+    connect() {
+      this.element.addEventListener('modal:close', () => {
+        $(this.element).modal("hide");
+        this.clearFormFields();
+      })
+    }
+
+    submitEnd(e){
+      if (e.detail.success) {
+        this.element.dispatchEvent(new CustomEvent('modal:close'))
+      }
+    }
+
+    clearFormFields() {
+      const form = this.element.querySelector('form');
+      form.reset();
+    }
+  }
+  ```
+  Not gonna lie, the connect code was mainly solved by prompts I gave chatGPT for how I can close the modal using jQuery. The idea that led to prompting AI for that question is noticing that if I place a `data-bs-dimiss = "modal` inside a button, I am able to close the modal itself. But I couldn't find a way to simulate having a button like that in stimulus. For the `submitEnd()` function, I found that out in this [YouTube Video]('https://www.youtube.com/watch?v=1QQ9j3z7NGw').

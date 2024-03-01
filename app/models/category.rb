@@ -4,4 +4,5 @@ class Category < ApplicationRecord
   validates :name, presence: true
 
   broadcasts_to ->(category) { :cat_list }
+
 end

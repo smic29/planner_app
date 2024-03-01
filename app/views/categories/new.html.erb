@@ -1,5 +1,7 @@
-<%= turbo_frame_tag "category_list" do %>
-    <%= form_with(model: @category, url: user_categories_path) do |form| %>
+<%= turbo_frame_tag "inside_modal" do %>
+    <%= form_with(model: @category, url: user_categories_path, data: {
+         action: "turbo:submit-end->new-category-modal#submitEnd"
+        }) do |form| %>
         <% if @category.errors.any? %>
             <div id="error_explanation">
                 <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
@@ -10,7 +12,7 @@
                 </ul>
             </div>
         <% end %>
-        <div class="d-grid gap-2">
+        <div class="d-grid gap-2" data-action="turbo:submit-end->new-category-modal#submitEnd">
             <div class="field form-floating">
                 <%= form.text_field :name, required:true, autocomplete:"off", class:"form-control", placeholder:"title" %>
                 <%= form.label :name, class:"form-label small" %>
@@ -22,9 +24,8 @@
             </div>
 
             <div class="actions d-grid">
-                <%= form.submit data: { turbo_frame: "_top" }, class: "btn btn-outline-success" %>
+                <%= form.submit class: "btn btn-outline-success" %>
             </div>
         </div>
     <% end %>
-    <%= link_to 'Back', user_categories_path %>
 <% end %>

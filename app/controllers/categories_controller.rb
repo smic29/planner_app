@@ -42,6 +42,11 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
+        format.turbo_stream { render turbo_stream: turbo_stream.append(
+          :categories_list,
+          partial: "categories/list",
+          locals: { category: @category }
+        ) }
         format.html { redirect_to user_categories_path, notice: "Category was successfully created."}
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -1,11 +1,11 @@
 
 <%= turbo_frame_tag "category_list" do %>
-<%= turbo_stream_from :cat_list %>
     <div class="d-grid gap-2 shadow rounded p-3">
+        <%= turbo_stream_from :cat_list %>
         <h4 class="text-center">Your categories</h4>
 
         <% if @categories.any? %>
-            <div>
+            <div id="categories_list">
                 <% @categories.each do |category| %>
                     <%= render 'categories/list', category: category %>
                 <% end %>
@@ -13,6 +13,8 @@
         <% else %>
             <p>No categories found.</p>
         <% end %>
-    <%= link_to 'Add a Category', new_user_category_path, class:"btn btn-block btn-outline-success w-full" %>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signedInModal">
+        Add New Category
+    </button>
     </div>
 <% end %>
