@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "task" do %>
-    <div>
+    <div id=<%= dom_id(task) %>>
         <%= task.id %>
         <%= task.title %>
         <%= task.description %>

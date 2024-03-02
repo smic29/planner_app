@@ -33,8 +33,9 @@
   - Went with a modal that closes after successful submission.
 - [ ] Broadcast issues with append.
 - [ ] Implement tests.
-- [ ] Complete main page layout with categories and Tasks
+- [x] Complete main page layout with categories and Tasks
 - [x] Category turbo-frame will not properly update if empty.
+- [ ] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
