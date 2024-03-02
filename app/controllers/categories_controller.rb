@@ -43,7 +43,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.turbo_stream { render turbo_stream: turbo_stream.append(
-          :categories_list,
+          :cat_list,
           partial: "categories/list",
           locals: { category: @category }
         ) }

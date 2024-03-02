@@ -5,7 +5,7 @@
         <h4 class="text-center">Your categories</h4>
 
         <% if @categories.any? %>
-            <div id="categories_list">
+            <div id="cat_list">
                 <% @categories.each do |category| %>
                     <%= render 'categories/list', category: category %>
                 <% end %>
