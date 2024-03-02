@@ -10,14 +10,14 @@
 ## User Stories
 - [x] I want to create a category that can be used to organize my tasks.
 - [ ] I want to edit a category to update the category's details.
-- [ ] I want to view a category to show the category's details.
-- [ ] I want to create a task for a specific category so that I can organize tasks quicker.
+- [x] I want to view a category to show the category's details.
+- [x] I want to create a task for a specific category so that I can organize tasks quicker.
 - [ ] I want to edit a task to update task's details.
-- [ ] I want to view a task to show task's details.
+- [x] I want to view a task to show task's details.
 - [ ] I want to delete a task to lessen my unnecessary daily tasks.
 - [ ] I want to view my tasks for today for me to remind what are my priorities for today.
 - [x] I want to create my account so that I can have my own credentials.
-- [ ] I want to login my account so that I can access my account and link my own tasks.
+- [x] I want to login my account so that I can access my account and link my own tasks.
 
 ## TODO
 - [x] Fix sign up validation errors. 02/27/24
@@ -36,6 +36,7 @@
 - [x] Complete main page layout with categories and Tasks
 - [x] Category turbo-frame will not properly update if empty.
 - [ ] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
+- [ ] Broadcast tasks?
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
