@@ -4,15 +4,13 @@
         <%= turbo_stream_from :cat_list %>
         <h4 class="text-center">Your categories</h4>
 
-        <% if @categories.any? %>
-            <div id="cat_list">
-                <% @categories.each do |category| %>
-                    <%= render 'categories/list', category: category %>
-                <% end %>
-            </div>
-        <% else %>
-            <p>No categories found.</p>
-        <% end %>
+        <div id="cat_list">
+            <% if @categories.any? %>
+                    <% @categories.each do |category| %>
+                        <%= render 'categories/list', category: category %>
+                    <% end %>     
+            <% end %>
+        </div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signedInModal">
         Add New Category
     </button>
