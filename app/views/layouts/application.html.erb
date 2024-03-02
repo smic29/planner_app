@@ -31,7 +31,9 @@
           <% end %>
         </div>
         <div class="col-9">
-          Hello world!
+          <%= turbo_frame_tag "task_list" do %>
+            Hello world!
+          <% end %>
         </div>
       </div>
     </main>
