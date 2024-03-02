@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between" id=<%= dom_id(category) %>>
-    <%= link_to category.name, category_tasks_path(category.id), data: { turbo_frame: "task_list" } %>
+    <%= link_to category.name, category_tasks_path(category.id), data: { turbo_frame: "tasks_list" } %>
     <%= button_to "Delete", [current_user, category ], method: :delete, class:"btn btn-sm btn-outline-danger", 
     form: { data: { turbo_confirm: "Deleting a category will delete all of its task. Do you still want to proceed? "}} %>
 </div>
