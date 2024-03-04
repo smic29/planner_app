@@ -11,8 +11,13 @@
                     <% end %>     
             <% end %>
         </div>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signedInModal">
-        Add New Category
-    </button>
+    <%= link_to "Add a Category", new_user_category_path(current_user), class:"btn btn-outline-success", 
+        data: {
+            turbo_frame: :inside_modal,
+            controller: "modal-button",
+            action: "click->modal-button#handleClick",
+            "bs-toggle": "modal",
+            "bs-target": "#signedInModal"
+        } %>
     </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "new_task" do %>
+<%= turbo_frame_tag "inside_modal" do %>
     <%= form_with(model: @task, url: category_tasks_path) do |form| %>
         <% if @task.errors.any? %>
             <div id="error_explanation">
@@ -12,6 +12,7 @@
         <% end %>
 
         <div class="d-grid gap-2">
+            HI HELLO FROM TASK NEW
             <div class="field form-floating">
                 <%= form.text_field :title, autocomplete:"off", class:"form-control", placeholder:"title" %>
                 <%= form.label :title, class:"form-label small" %>
