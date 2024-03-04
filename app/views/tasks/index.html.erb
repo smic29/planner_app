@@ -2,7 +2,7 @@
     <div class="container shadow rounded p-3">
         <h1> Tasks for <%= @category.name %></h1>
         <p class="lead"><%= @category.description %></p>
-        <p><%= @category.id %></p>
+
         <%= turbo_stream_from :task_list %>
         <div id="task_list">
             <div>
