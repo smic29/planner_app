@@ -37,7 +37,7 @@
 - [ ] Look into the need for being able to delete Categories?
   - Went with a modal that closes after successful submission.
 - [ ] Broadcast issues with append.
-  - Found a way to fix the devise:warden issue by not using the current_user global variable
+  - Found a way to fix the devise:warden issue by not using the current_user global variable. Still broken, though.
 - [ ] Implement tests.
 - [ ] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
 - [ ] Broadcast tasks?
