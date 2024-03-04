@@ -12,7 +12,7 @@
 
 ## User Stories
 - [x] I want to create a category that can be used to organize my tasks.
-- [ ] I want to edit a category to update the category's details.
+- [x] I want to edit a category to update the category's details.
 - [x] I want to view a category to show the category's details.
 - [x] I want to create a task for a specific category so that I can organize tasks quicker.
 - [ ] I want to edit a task to update task's details.
