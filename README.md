@@ -47,6 +47,7 @@
 - [ ] have `.turbo_stream.erb` files instead of putting them within the controller.
 - [ ] Add default values for complete and finish_by in task model.
 - [ ] Do a check of all routes that aren't needed
+- [ ] Add validation for categories to be unique.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
