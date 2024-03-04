@@ -7,6 +7,9 @@
 - Bootstrap
 - Postgres
 
+## Project References:
+- [Hotwire Handbook]('https://hotwired.dev/')
+
 ## User Stories
 - [x] I want to create a category that can be used to organize my tasks.
 - [ ] I want to edit a category to update the category's details.
@@ -27,14 +30,15 @@
   - [x] Task Model
 - [x] Find out why notices are not appearing when in Turbo Frame
   - Listed #2 in Issues Encountered.
-- [ ] Look into the need for being able to delete Categories?
 - [x] Fix main page layout
 - [x] Find a way to fix creation so that it happens with Turbo Stream. Modal? Div appears somewhere on screen?
-  - Went with a modal that closes after successful submission.
-- [ ] Broadcast issues with append.
-- [ ] Implement tests.
 - [x] Complete main page layout with categories and Tasks
 - [x] Category turbo-frame will not properly update if empty.
+- [ ] Look into the need for being able to delete Categories?
+  - Went with a modal that closes after successful submission.
+- [ ] Broadcast issues with append.
+  - Found a way to fix the devise:warden issue by not using the current_user global variable
+- [ ] Implement tests.
 - [ ] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
