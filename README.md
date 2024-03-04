@@ -15,7 +15,7 @@
 - [x] I want to edit a category to update the category's details.
 - [x] I want to view a category to show the category's details.
 - [x] I want to create a task for a specific category so that I can organize tasks quicker.
-- [ ] I want to edit a task to update task's details.
+- [x] I want to edit a task to update task's details.
 - [x] I want to view a task to show task's details.
 - [x] I want to delete a task to lessen my unnecessary daily tasks.
 - [ ] I want to view my tasks for today for me to remind what are my priorities for today.
@@ -48,6 +48,8 @@
 - [ ] Add default values for complete and finish_by in task model.
 - [ ] Do a check of all routes that aren't needed
 - [ ] Add validation for categories to be unique.
+- [ ] Add task fields for complete by and completed? columns.
+- [ ] Do some pre-final style changes.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
