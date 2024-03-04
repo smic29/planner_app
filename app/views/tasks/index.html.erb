@@ -14,8 +14,8 @@
         } %>
 
         <%= turbo_stream_from :task_list %>
-        <div id="task_list">
-            <div class="accordion" id="taskAccordion">
+        <div id="task_list_THISDOESNTDOANYTHINGRN">
+            <div class="accordion" id="task_list">
                 <% if @tasks.any? %>
                         <% @tasks.each do |task| %>
                             <%= render 'tasks/task', task: task %>

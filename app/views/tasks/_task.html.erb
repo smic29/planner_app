@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "task" do %>
+<%= turbo_frame_tag dom_id(task) do %>
     <div id=<%= dom_id(task) %> class="accordion-item">
         <div class="accordion-header">
             <button class="accordion-button collapsed lead" type="button" data-bs-toggle='collapse' 
@@ -10,7 +10,7 @@
             </button>
         </div>
         <div class="accordion-collapse collapse"
-        id="collapse<%= dom_id(task)%>" data-bs-parent="#taskAccordion">
+        id="collapse<%= dom_id(task)%>" data-bs-parent="#task_list">
             <div class="accordion-body">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">
