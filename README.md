@@ -17,7 +17,7 @@
 - [x] I want to create a task for a specific category so that I can organize tasks quicker.
 - [ ] I want to edit a task to update task's details.
 - [x] I want to view a task to show task's details.
-- [ ] I want to delete a task to lessen my unnecessary daily tasks.
+- [x] I want to delete a task to lessen my unnecessary daily tasks.
 - [ ] I want to view my tasks for today for me to remind what are my priorities for today.
 - [x] I want to create my account so that I can have my own credentials.
 - [x] I want to login my account so that I can access my account and link my own tasks.
