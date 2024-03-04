@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :find_category, only: [ :index, :new, :create ]
+  before_action :set_task, only: [ :destroy ]
 
   def index
     @tasks = @category.tasks
@@ -21,14 +22,28 @@ class TasksController < ApplicationController
           partial: "tasks/task",
           locals: { task: @task }
         )}
-        format.html { redirect_to category_tasks_path, notice: "Category was successfully created!"}
+        format.html { redirect_to category_tasks_path, notice: "Task was successfully created!"}
       else
         format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
+  def destroy
+    @task.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to category_tasks_path, notice: "Task was successfully deleted" }
+    end
+  end
+
   private
+
+  def set_task
+    find_category
+    @task = @category.tasks.find(params[:id])
+  end
 
   def find_category
     @category = current_user.categories.find(params[:category_id])

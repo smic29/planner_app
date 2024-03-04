@@ -18,7 +18,7 @@
             <div class="accordion" id="task_list">
                 <% if @tasks.any? %>
                         <% @tasks.each do |task| %>
-                            <%= render 'tasks/task', task: task %>
+                            <%= render 'tasks/task', task: task, category: @category %>
                         <% end %>     
                 <% end %>
             </div>

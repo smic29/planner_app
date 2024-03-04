@@ -21,6 +21,8 @@
                         <%= "Added " + time_ago_in_words(task.created_at) + " ago" %>
                     </div>
                 </div>
+                <%= button_to "Delete", category_task_path(category, task), method: :delete, class:"btn btn-sm btn-outline-danger",
+                form: { data: { turbo_confirm: "Are you sure?" } } %>
             </div>
         </div>
     </div>
