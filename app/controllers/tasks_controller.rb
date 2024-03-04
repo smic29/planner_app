@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :find_category, only: [ :index, :new, :create ]
-  before_action :set_task, only: [ :destroy ]
+  before_action :set_task, only: [ :destroy, :edit, :update ]
 
   def index
     @tasks = @category.tasks
@@ -26,6 +26,25 @@ class TasksController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @task.update(task_params)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update( @task,
+          partial: "tasks/task",
+          locals: { task: @task, category: @category })
+        end
+        format.html { redirect_to category_tasks_path(@category), notice: 'Task was successfull updated.' }
+      end
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

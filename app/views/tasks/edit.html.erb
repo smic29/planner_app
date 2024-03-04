@@ -1,0 +1,24 @@
+<%= turbo_frame_tag "inside_modal" do %>  
+    <%= form_with(model: @task, url: category_task_path,
+    data: {
+        action: "turbo:submit-end->new-category-modal#submitEnd"
+    }) do |form| %>
+    <%= form.hidden_field :dom_id, value: dom_id(@task) %>
+        <div class="d-grid gap-2">
+            <div class="field form-floating">
+                <%= form.text_field :title, autocomplete:"off", class:"form-control", placeholder:"title" %>
+                <%= form.label :title, class:"form-label small" %>
+            </div>
+
+            <div class="field form-floating">
+                <%= form.text_area :description, class:"form-control", placeholder:"description", style:"height:100px" %>
+                <%= form.label :description, class:"form-label small" %>
+            </div>
+
+            <div class="actions d-grid">
+                <%= form.submit class:"btn btn-outline-success",
+                data: { turbo_frame: "_top" } %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
