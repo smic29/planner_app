@@ -1,7 +1,10 @@
  <%= turbo_frame_tag "tasks_list" do %>
     <div class="container shadow rounded p-3">
-        <h1> Tasks for <%= @category.name %></h1>
-        <p class="lead"><%= @category.description %></p>
+        <%= turbo_frame_tag "edit_category" do %>
+            <h1> Tasks for <%= @category.name %></h1>
+            <p class="lead"><%= @category.description %></p>
+            <%= link_to "Edit", edit_category_path(@category.id)  %>
+        <% end %>
 
         <%= link_to "Add a task", new_category_task_path(@category.id), 
         class:"btn btn-outline-success mb-2", 

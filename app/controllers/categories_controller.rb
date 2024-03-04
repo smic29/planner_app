@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to user_categories(@category), flash[:notice] = 'Category was successfully updated.'
+      redirect_to category_tasks_path(@category), notice: 'Category was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
