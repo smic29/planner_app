@@ -1,0 +1,3 @@
+<%= turbo_stream.append("cat_list") do %>
+    <%= render partial: "categories/category", locals: { category: @category } %>
+<% end %>

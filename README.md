@@ -38,6 +38,7 @@
 - [ ] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
+- [ ] have `.turbo_stream.erb` files instead of putting them within the controller.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
@@ -98,3 +99,7 @@
   }
   ```
   Not gonna lie, the connect code was mainly solved by prompts I gave chatGPT for how I can close the modal using jQuery. The idea that led to prompting AI for that question is noticing that if I place a `data-bs-dimiss = "modal` inside a button, I am able to close the modal itself. But I couldn't find a way to simulate having a button like that in stimulus. For the `submitEnd()` function, I found that out in this [YouTube Video]('https://www.youtube.com/watch?v=1QQ9j3z7NGw').
+
+  4. While testing ActionCable, and testing my understanding of turbo streams, I accidentally created an infinite loop of create. I was unable to close the server using Ctrl+C. Due to this, I was able to find a way to kill running rails servers by using the following:
+  - `lsof -wni tcp:localhostPORT` to find the PID
+  - `kill -9 PID` to stop the running servers on that port.

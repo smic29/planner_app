@@ -7,7 +7,7 @@
         <div id="cat_list">
             <% if @categories.any? %>
                     <% @categories.each do |category| %>
-                        <%= render 'categories/list', category: category %>
+                        <%= render 'categories/category', category: category %>
                     <% end %>     
             <% end %>
         </div>
