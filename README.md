@@ -32,19 +32,19 @@
   - Listed #2 in Issues Encountered.
 - [x] Fix main page layout
 - [x] Find a way to fix creation so that it happens with Turbo Stream. Modal? Div appears somewhere on screen?
+  - Went with a modal that closes after successful submission.
 - [x] Complete main page layout with categories and Tasks
 - [x] Category turbo-frame will not properly update if empty.
 - [x] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
   - Made it a modal as well, shares same modal with creating a new task.
+- [x] Fix form submission of new task: It doesn't close the modal.
 - [ ] Look into the need for being able to delete Categories?
-  - Went with a modal that closes after successful submission.
 - [ ] Broadcast issues with append.
   - Found a way to fix the devise:warden issue by not using the current_user global variable. Still broken, though.
 - [ ] Implement tests.
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] have `.turbo_stream.erb` files instead of putting them within the controller.
-- [ ] Fix form submission of new task: It doesn't close the modal.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
