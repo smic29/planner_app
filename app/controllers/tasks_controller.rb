@@ -20,7 +20,7 @@ class TasksController < ApplicationController
         format.turbo_stream { render turbo_stream: turbo_stream.append(
           :task_list,
           partial: "tasks/task",
-          locals: { task: @task }
+          locals: { task: @task, category: @category }
         )}
         format.html { redirect_to category_tasks_path, notice: "Task was successfully created!"}
       else
