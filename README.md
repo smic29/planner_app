@@ -52,6 +52,9 @@
 - [ ] Add validation for categories to be unique.
 - [ ] Add task fields for complete by and completed? columns.
 - [ ] Do some pre-final style changes.
+- [ ] Ideas for Task for today:
+  - Badges on Categories.
+  - Notification type button that would open?
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
