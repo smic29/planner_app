@@ -1,10 +1,11 @@
 <%= turbo_frame_tag dom_id(task) do %>
     <%= turbo_stream_from task %>
-    <div id=<%= dom_id(task) %> class="accordion-item">
+    <div id=<%= dom_id(task) %> class="accordion-item" data-controller="accordion">
         <div class="accordion-header">
             <button class="accordion-button collapsed lead" type="button" data-bs-toggle='collapse' 
             data-bs-target="#collapse<%= dom_id(task)%>"
-            aria-expanded="false" aria-controls="collapse<%= dom_id(task)%>">
+            aria-expanded="false" aria-controls="collapse<%= dom_id(task)%>"
+            id=<%= dom_id(task,"button")%>>
                 <div>
                     <%= task.title %>
                 </div>
