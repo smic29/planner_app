@@ -9,6 +9,7 @@
 
 ## Project References:
 - [Hotwire Handbook]('https://hotwired.dev/')
+- [Issue #5: Updating Turbo-stream render template]('https://github.com/hotwired/turbo/pull/20')
 
 ## User Stories
 - [x] I want to create a category that can be used to organize my tasks.
@@ -45,6 +46,7 @@
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] have `.turbo_stream.erb` files instead of putting them within the controller.
+  - This doesn't look important anymore.
 - [ ] Add default values for complete and finish_by in task model.
 - [ ] Do a check of all routes that aren't needed
 - [ ] Add validation for categories to be unique.
@@ -114,3 +116,27 @@
   4. While testing ActionCable, and testing my understanding of turbo streams, I accidentally created an infinite loop of create. I was unable to close the server using Ctrl+C. Due to this, I was able to find a way to kill running rails servers by using the following:
   - `lsof -wni tcp:localhostPORT` to find the PID
   - `kill -9 PID` to stop the running servers on that port.
+
+  5. Not an issue, I think, but I wanted the turbo-stream render on may task index to have the targetted update show up as opened just so the edit can be seen right away. Took awhile to understand how to get it done, but I was able to accomplish my intent by having an accordion_controller:
+  ```js
+    // Connects to data-controller="accordion"
+  export default class extends Controller {
+    connect() {
+      document.addEventListener('turbo:before-stream-render', (e) => {
+        const turboStream = e.target;
+        const template = turboStream.querySelector('template');
+        const content = template.content
+        const updateId = content.querySelector('turbo-frame').id
+
+        if (this.element.id === updateId){
+          const button = content.querySelector(`#button_${updateId}`)
+          button.classList.remove('collapsed')
+
+          const div = content.querySelector(`#collapse${updateId}`)
+          div.classList.add('show')
+        }
+      })
+    }
+  }
+  ```
+  Basically, the controller listens for the turbo-stream before-render event then accesses the template included in that stream to update the necessary elements to keep the tab open.
