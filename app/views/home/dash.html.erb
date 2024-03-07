@@ -1,12 +1,12 @@
 <%= turbo_frame_tag "tasks_list" do %>
     <div class="container shadow p-3 rounded">
         <h4>
-            Review your tasks for Today: <%= Date.today.strftime("%a, %b %d") %>
+            Review your tasks for Today | <%= Date.today.strftime("%a, %b %e") %>
         </h4>
         <% @tasks.group_by { |task| task.category.name }.each do |category_name, tasks| %>
             <h5><%= category_name %></h5>
             <% tasks.each do |task| %>
-                <div class="d-flex justify-content-between shadow-sm p-2 rounded mb-1">
+                <div class="d-flex justify-content-between shadow-sm p-2 rounded mb-1 align-items-center">
                     <div>
                         <p class="lead my-0">
                             <%= task.title %> 
@@ -15,7 +15,17 @@
                             <%= task.description %>
                         </p>
                     </div>
-                    <%= task.finish_by.strftime("%A, %B %d, %Y") %>
+                    <!-- Might use, might not 
+                    <%= task.finish_by.strftime("%A, %b %e '%y") %>
+                    -->
+                    <% if task.complete %>
+                    <h1>HURRAY</h1>
+                    <% end %>
+                    <div class="form-check">
+                        <%= check_box_tag 'complete', task.id, task.complete,
+                        class:"form-check-input"
+                        %>
+                    </div>
                 </div>
             <% end %>
         <% end %>
