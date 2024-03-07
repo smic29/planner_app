@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "tasks_list" do %>
+    <div class="container shadow p-3 rounded">
+        <h4>
+            Review your tasks for Today:
+        </h4>
+        <% @tasks.each do |task| %>
+            <div class="d-flex justify-content-between shadow-sm p-2 rounded mb-1">
+                <div>
+                    <p class="lead my-0">
+                        <%= task.title %>
+                    </p>
+                    <p class="small my-0">
+                        <%= task.description %>
+                    </p>
+                </div>
+                <%= task.finish_by %>
+            </div>
+        <% end %>
+    </div>
+<% end %>

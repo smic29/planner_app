@@ -31,7 +31,7 @@
           <% end %>
         </div>
         <div class="col-9">
-          <%= turbo_frame_tag "tasks_list" do %>
+          <%= turbo_frame_tag "tasks_list", src: dashboard_path do %>
             <div class="container shadow p-3 rounded">
               Select a Category to display your tasks!
             </div>
