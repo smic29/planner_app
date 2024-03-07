@@ -41,7 +41,7 @@
   - Made it a modal as well, shares same modal with creating a new task.
 - [x] Fix form submission of new task: It doesn't close the modal.
 - [x] Broadcast issues with append.
-  - Found a way to fix the devise:warden issue by not using the current_user global variable. Still broken, though.
+  - Found a way to fix the devise:warden issue by not using the current_user global variable.
   - Fixed by adding a target to locals in Category model.
     ```ruby
     after_create_commit -> {
@@ -49,16 +49,15 @@
     partial: "categories/category",
     locals: { category: self}, target: "cat_list" }
     ```
-- [ ] Look into the need for being able to delete Categories?
+- [x] Add task fields for complete by and completed? columns.
+- [x] Look into the need for being able to delete Categories?
+  - Just allowed deletion. Can't see why not.
+- [x] Add default values for complete and finish_by in task model.
 - [ ] Implement tests.
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
-- [ ] have `.turbo_stream.erb` files instead of putting them within the controller.
-  - This doesn't look important anymore.
-- [ ] Add default values for complete and finish_by in task model.
 - [ ] Do a check of all routes that aren't needed
 - [ ] Add validation for categories to be unique.
-- [ ] Add task fields for complete by and completed? columns.
 - [ ] Do some pre-final style changes.
 - [ ] Ideas for Task for today:
   - Badges on Categories.
@@ -68,6 +67,7 @@
 - [ ] Do something about the 'TypeError' happening when editing a category within the task index.
   - Likely has something to do with the stimulus. Check on that.
 - [ ] Make sure modal has a title of what it is displaying. Or remove it. I dunno
+- [ ] Find a way to post a patch request after checking a checkbox.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
