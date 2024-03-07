@@ -9,6 +9,7 @@
 
 ## Project References:
 - [Hotwire Handbook]('https://hotwired.dev/')
+- [Hotrails Tutorial]('https://www.hotrails.dev/turbo-rails/turbo-streams')
 - [Issue #5: Updating Turbo-stream render template]('https://github.com/hotwired/turbo/pull/20')
 
 ## User Stories
@@ -39,9 +40,16 @@
 - [x] Clear task new form on complete then redirect back to add button? Maybe just make it a modal again?
   - Made it a modal as well, shares same modal with creating a new task.
 - [x] Fix form submission of new task: It doesn't close the modal.
-- [ ] Look into the need for being able to delete Categories?
-- [ ] Broadcast issues with append.
+- [x] Broadcast issues with append.
   - Found a way to fix the devise:warden issue by not using the current_user global variable. Still broken, though.
+  - Fixed by adding a target to locals in Category model.
+    ```ruby
+    after_create_commit -> {
+    broadcast_prepend_to :cat_list,
+    partial: "categories/category",
+    locals: { category: self}, target: "cat_list" }
+    ```
+- [ ] Look into the need for being able to delete Categories?
 - [ ] Implement tests.
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
