@@ -15,15 +15,19 @@
         <% end %>
 
         <div class="d-grid gap-2">
-            HI HELLO FROM TASK NEW
             <div class="field form-floating">
-                <%= form.text_field :title, autocomplete:"off", class:"form-control", placeholder:"title" %>
+                <%= form.text_field :title, autocomplete:"off", class:"form-control", placeholder:"title", required:true %>
                 <%= form.label :title, class:"form-label small" %>
             </div>
 
             <div class="field form-floating">
                 <%= form.text_area :description, class:"form-control", placeholder:"description", style:"height:100px" %>
                 <%= form.label :description, class:"form-label small" %>
+            </div>
+
+            <div class="field d-flex justify-content-between">
+                <%= form.label :finish_by, "Complete on or before:" %>
+                <%= form.date_field :finish_by, required:true %>
             </div>
 
             <div class="actions d-grid">
