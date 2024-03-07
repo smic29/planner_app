@@ -1,21 +1,23 @@
 <%= turbo_frame_tag "tasks_list" do %>
     <div class="container shadow p-3 rounded">
         <h4>
-            Review your tasks for Today:
+            Review your tasks for Today: <%= Date.today.strftime("%a, %b %d") %>
         </h4>
-        <% @tasks.each do |task| %>
-            <div class="d-flex justify-content-between shadow-sm p-2 rounded mb-1">
-                <div>
-                    <p class="lead my-0">
-                        <%= task.title %> 
-                    </p>
-                    <p class="small my-0">
-                        <%= task.description %>
-                    </p>
+        <% @tasks.group_by { |task| task.category.name }.each do |category_name, tasks| %>
+            <h5><%= category_name %></h5>
+            <% tasks.each do |task| %>
+                <div class="d-flex justify-content-between shadow-sm p-2 rounded mb-1">
+                    <div>
+                        <p class="lead my-0">
+                            <%= task.title %> 
+                        </p>
+                        <p class="small my-0">
+                            <%= task.description %>
+                        </p>
+                    </div>
+                    <%= task.finish_by.strftime("%A, %B %d, %Y") %>
                 </div>
-                <em class="text-body-secondary"><%= task.category.name %></em>
-                <%= task.finish_by.strftime("%A, %B %d, %Y") %>
-            </div>
+            <% end %>
         <% end %>
     </div>
 <% end %>
