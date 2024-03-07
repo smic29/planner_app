@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def dash
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.where('finish_by = ?', Date.today.beginning_of_day )
   end
 
 end

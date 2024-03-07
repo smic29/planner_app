@@ -14,7 +14,7 @@
                     </p>
                 </div>
                 <em class="text-body-secondary"><%= task.category.name %></em>
-                <%= task.finish_by %>
+                <%= task.finish_by.strftime("%A, %B %d, %Y") %>
             </div>
         <% end %>
     </div>
