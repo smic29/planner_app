@@ -7,10 +7,6 @@ export default class extends Controller {
     const title = this.element.querySelector('#signedInModalLabel')
     
     turboFrame.addEventListener('turbo:frame-load', (e) => {
-      const url = e.target.src 
-      
-      console.log(url.split('/'))
-      
       if (this.urlMatchesPattern(url, ['users','new'])) {
         title.innerHTML = "Add a new Category"
       }  
