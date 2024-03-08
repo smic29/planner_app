@@ -53,6 +53,37 @@
 - [x] Look into the need for being able to delete Categories?
   - Just allowed deletion. Can't see why not.
 - [x] Add default values for complete and finish_by in task model.
+- [x] Make sure modal has a title of what it is displaying. Or remove it. I dunno
+  - Added a stimulus controller that checks the turbo frame src:
+  - ```ruby
+      connect() {
+        const turboFrame = this.element.querySelector('turbo-frame')
+        const title = this.element.querySelector('#signedInModalLabel')
+        
+        turboFrame.addEventListener('turbo:frame-load', (e) => {
+          const url = e.target.src 
+          
+          console.log(url.split('/'))
+          
+          if (this.urlMatchesPattern(url, ['users','new'])) {
+            title.innerHTML = "Add a new Category"
+          }  
+          
+          if (this.urlMatchesPattern(url, ['edit','tasks'])) {
+            title.innerHTML = "Edit a Task"
+          }
+
+          if (this.urlMatchesPattern(url, ['new','tasks'])) {
+            title.innerHTML = "Add a new Task"
+          }
+        })
+      }
+
+      urlMatchesPattern(url, patterns) {
+        const segments = url.split('/')
+        return patterns.every(pattern => segments.includes(pattern))
+      }
+    ```
 - [ ] Implement tests.
 - [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
@@ -66,7 +97,6 @@
   - Currently only working for sign in and sign out.
 - [ ] Do something about the 'TypeError' happening when editing a category within the task index.
   - Likely has something to do with the stimulus. Check on that.
-- [ ] Make sure modal has a title of what it is displaying. Or remove it. I dunno
 - [ ] Find a way to post a patch request after checking a checkbox.
 
 ## Issues Encountered
