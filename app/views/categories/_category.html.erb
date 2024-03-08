@@ -1,5 +1,14 @@
-<div class="d-flex justify-content-between" id=<%= dom_id(category) %>>
-    <%= link_to category.name, category_tasks_path(category.id), data: { turbo_frame: "tasks_list" } %>
-    <%= button_to "Delete", category, method: :delete, class:"btn btn-sm btn-outline-danger", 
-    form: { data: { turbo_confirm: "Deleting a category will delete all of its task. Do you still want to proceed? "}} %>
+<div class="d-flex justify-content-between align-items-center" id=<%= dom_id(category) %>>
+    <%= link_to category.name, category_tasks_path(category.id), 
+    data: { turbo_frame: "tasks_list",
+            # controller: "categ-btn",
+            "categ-btn-target": "button",
+            action: "click->categ-btn#add_active" 
+            },
+    class: "text-start flex-grow-1 btn btn-outline-primary link-dark border-top-0 border-end-0 mb-1 border-primary-subtle" %>
+    <%= button_to "Delete", category, 
+    method: :delete, 
+    class:"btn btn-sm btn-outline-danger visually-hidden", 
+    form: { 
+        data: { turbo_confirm: "Deleting a category will delete all of its task. Do you still want to proceed? "}} %>
 </div>
