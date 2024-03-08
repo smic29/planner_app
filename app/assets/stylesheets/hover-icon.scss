@@ -1,0 +1,23 @@
+.icon-hover {
+    position: relative;
+}
+
+.icon-hover:hover .icon-hover-label {
+    display: inline-block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.icon-hover-label {
+    display: inline-block;
+    user-select: none;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+svg:hover {
+    transform: scale(1.1);
+    color: red;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
