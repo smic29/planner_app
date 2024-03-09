@@ -4,9 +4,9 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  broadcasts_to ->(category) { :cat_list }
-  after_create_commit -> {
-    broadcast_append_to :cat_list,
-    partial: "categories/category",
-    locals: { category: self}, target: "cat_list" }
+  broadcasts_to ->(category) { "categories" }, inserts_by: :append
+  # after_create_commit -> {
+  #   broadcast_append_to :cat_list,
+  #   partial: "categories/category",
+  #   locals: { category: self}, target: "cat_list" }
 end
