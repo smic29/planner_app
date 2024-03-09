@@ -90,9 +90,11 @@
 - [x] Ideas for Task for today:
   - [x] Badges on Categories.
   - Notification type button that would open? -- Maybe... maybe not.
+- [x] Broadcast tasks?
+  - Refactored task partial to use `task.category` instead of passing @category to the partial. This change made `broadcasts_to -> (task) { "tasks" }` possible.
+  - A lot to still learn and implement. But this worked, and I'm happy.
 - [ ] Implement tests.
   - Install Google Chrome for Linux
-- [ ] Broadcast tasks?
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
   - Remove users? As per code review 3/9/24

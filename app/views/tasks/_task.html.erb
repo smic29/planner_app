@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="mt-1 d-flex justify-content-between">
-                    <%= link_to "Edit", edit_category_task_path(category, task),
+                    <%= link_to "Edit", edit_category_task_path(task.category, task),
                     class:"btn btn-sm btn-outline-warning" ,
                     data: {
                         turbo_frame: :inside_modal,
@@ -41,7 +41,7 @@
                         "bs-toggle": "modal",
                         "bs-target": "#signedInModal"
                     }  %>
-                    <%= button_to "Delete", category_task_path(category, task), method: :delete, class:"btn btn-sm btn-outline-danger",
+                    <%= button_to "Delete", category_task_path(task.category, task), method: :delete, class:"btn btn-sm btn-outline-danger",
                     form: { data: { turbo_confirm: "Are you sure?" } } %>
                 </div>
             </div>
