@@ -87,6 +87,9 @@
       const turboFrame = content.querySelector('turbo-frame');
       const updateId = turboFrame ? turboFrame.id : null;
     ```
+- [x] Ideas for Task for today:
+  - [x] Badges on Categories.
+  - Notification type button that would open? -- Maybe... maybe not.
 - [ ] Implement tests.
   - Install Google Chrome for Linux
 - [ ] Broadcast tasks?
@@ -95,13 +98,12 @@
   - Remove users? As per code review 3/9/24
 - [ ] Add validation for categories to be unique.
 - [ ] Do some pre-final style changes.
-- [ ] Ideas for Task for today:
-  - Badges on Categories.
-  - Notification type button that would open?
 - [ ] Fix notifications.
   - Currently only working for sign in and sign out.
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Feature to display task for today, tomorrow, or next week.
+- [ ] Category badges only update when Categories are updated. Adding new tasks will not update it.
+  - See what happens when broadcasting is finished for Tasks.
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
