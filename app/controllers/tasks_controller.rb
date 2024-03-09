@@ -17,11 +17,11 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.turbo_stream { render turbo_stream: turbo_stream.append(
-          :tasks,
-          partial: "tasks/task",
-          locals: { task: @task }
-        )}
+        format.turbo_stream { render turbo_stream: [
+          turbo_stream.append(:tasks, partial: "tasks/task", locals: { task: @task }),
+          turbo_stream.replace( @category , partial: "categories/category", locals: { category: @category })
+          ]
+        }
         format.html { redirect_to category_tasks_path, notice: "Task was successfully created!"}
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -52,7 +52,10 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { render turbo_stream: [
+        turbo_stream.remove(@task),
+        turbo_stream.replace( @task.category, partial: "categories/category", locals: { category: @task.category })
+      ]}
       format.html { redirect_to category_tasks_path, notice: "Task was successfully deleted" }
     end
   end
