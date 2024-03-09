@@ -18,6 +18,12 @@ class Task < ApplicationRecord
     partial: "categories/category",
     locals: { category: self.category }
   }
+  after_update_commit -> {
+    broadcast_replace_to "categories",
+    target: self.category,
+    partial: "categories/category",
+    locals: { category: self.category }
+  }
 
   def finish_by_in_future
     return if finish_by.blank? || finish_by >= Date.today
