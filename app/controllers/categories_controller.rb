@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
-    render :index
+    @tasks = current_user.tasks.where('finish_by = ?', Date.today.beginning_of_day )
   end
 
   def show

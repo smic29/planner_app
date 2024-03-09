@@ -5,8 +5,13 @@ class Category < ApplicationRecord
   validates :name, presence: true
 
   broadcasts_to ->(category) { "categories" }, inserts_by: :append
-  # after_create_commit -> {
-  #   broadcast_append_to :cat_list,
+  # after_update_commit -> {
+  #   broadcast_replace_to :categories,
   #   partial: "categories/category",
-  #   locals: { category: self}, target: "cat_list" }
+  #   locals: { category: self, tasks: Task }, target: "categories" }
+
+  def task_count
+    tasks.where('finish_by = ?', Date.today.beginning_of_day).count
+  end
+
 end
