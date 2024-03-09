@@ -93,6 +93,19 @@
 - [x] Broadcast tasks?
   - Refactored task partial to use `task.category` instead of passing @category to the partial. This change made `broadcasts_to -> (task) { "tasks" }` possible.
   - A lot to still learn and implement. But this worked, and I'm happy.
+- [x] Category badges only update when Categories are updated. Adding new tasks will not update it.
+  - This was done by adding a broadcasts_to within the task model that targets the category list partial:
+  - ```ruby
+       broadcasts_to ->(task) { "tasks" }, inserts_by: :append
+      after_create_commit -> {
+        broadcast_replace_to "categories",
+        target: self.category,
+        partial: "categories/category",
+        locals: { category: self.category }
+      }
+    ```
+  - just need to add this to create, delete, and update.
+  - See what happens when broadcasting is finished for Tasks.
 - [ ] Implement tests.
   - Install Google Chrome for Linux
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
@@ -104,8 +117,6 @@
   - Currently only working for sign in and sign out.
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Feature to display task for today, tomorrow, or next week.
-- [ ] Category badges only update when Categories are updated. Adding new tasks will not update it.
-  - See what happens when broadcasting is finished for Tasks.
 - [ ] Category updates will reset the active category button
   - Might want to reference accordion for fix.
 - [ ] Updates on task will broadcast replace and already open accordion.
