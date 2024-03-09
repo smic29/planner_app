@@ -80,6 +80,13 @@
         return patterns.every(pattern => segments.includes(pattern))
       }
     ```
+- [x] Do something about the 'TypeError' happening when editing a category within the task index.
+  - Likely has something to do with the stimulus. Check on that => Yeah that's it.
+  - Added a check if there's a turbo frame on the render that'll happen. Then just assigns null if there's none.
+  - ```js
+      const turboFrame = content.querySelector('turbo-frame');
+      const updateId = turboFrame ? turboFrame.id : null;
+    ```
 - [ ] Implement tests.
   - Install Google Chrome for Linux
 - [ ] Broadcast tasks?
@@ -93,8 +100,6 @@
   - Notification type button that would open?
 - [ ] Fix notifications.
   - Currently only working for sign in and sign out.
-- [ ] Do something about the 'TypeError' happening when editing a category within the task index.
-  - Likely has something to do with the stimulus. Check on that.
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Feature to display task for today, tomorrow, or next week.
 

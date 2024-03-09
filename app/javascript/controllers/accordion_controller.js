@@ -7,7 +7,8 @@ export default class extends Controller {
       const turboStream = e.target;
       const template = turboStream.querySelector('template');
       const content = template.content
-      const updateId = content.querySelector('turbo-frame').id
+      const turboFrame = content.querySelector('turbo-frame');
+      const updateId = turboFrame ? turboFrame.id : null;
 
       if (this.element.id === updateId){
         const button = content.querySelector(`#button_${updateId}`)
