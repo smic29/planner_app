@@ -118,8 +118,9 @@
 - [x] Category updates will reset the active category button
   - Might want to reference accordion for fix.
   - Fixed by adding a stimulus controller that listens for a `turbo:before-stream-render` event. It will then check if the stream target matches the div ID then will add classes from there. Code is in `app/javascript/controllers/categ_btn_controller`
-- [ ] Implement tests.
-  - Install Google Chrome for Linux
+- [x] Implement tests.
+  - See Issue #6 for installation in WSL
+  - [x] System test for landing page.
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
   - Remove users? As per code review 3/9/24
