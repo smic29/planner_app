@@ -17,7 +17,7 @@
 
             <div class="field d-flex justify-content-between">
                 <%= form.label :finish_by, "Complete on or before:" %>
-                <%= form.date_field :finish_by, required:true %>
+                <%= form.date_field :finish_by, required:true, min: Date.today.to_s %>
             </div>
 
             <div class="actions d-grid">
