@@ -196,7 +196,7 @@
   - `lsof -wni tcp:localhostPORT` to find the PID
   - `kill -9 PID` to stop the running servers on that port.
 
-  5. Not an issue, I think, but I wanted the turbo-stream render on may task index to have the targetted update show up as opened just so the edit can be seen right away. Took awhile to understand how to get it done, but I was able to accomplish my intent by having an accordion_controller:
+  5. Not an issue, I think, but I wanted the turbo-stream render on my task index to have the targetted update show up as opened just so the edit can be seen right away. Took awhile to understand how to get it done, but I was able to accomplish my intent by having an accordion_controller:
   ```js
     // Connects to data-controller="accordion"
   export default class extends Controller {
