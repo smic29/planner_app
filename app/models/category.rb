@@ -4,7 +4,7 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
-  broadcasts_to ->(category) { "categories" }, inserts_by: :append
+  broadcasts_to ->(category) { [category.user, "categories"] }, inserts_by: :append
   # after_update_commit -> {
   #   broadcast_replace_to :categories,
   #   partial: "categories/category",

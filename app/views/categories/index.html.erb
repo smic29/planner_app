@@ -1,7 +1,7 @@
 
 <%= turbo_frame_tag "category_list" do %>
     <div class="d-grid gap-2 shadow rounded p-3">
-        <%= turbo_stream_from "categories" %>
+        <%= turbo_stream_from current_user, "categories" %>
         <h4 class="text-center">Your categories</h4>
 
         <div id="categories" data-controller="categ-btn">

@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = current_user.categories
     @tasks = current_user.tasks.where('finish_by = ?', Date.today.beginning_of_day )
+    @user = current_user
   end
 
   def show
