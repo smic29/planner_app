@@ -106,6 +106,15 @@
     ```
   - just need to add this to create, delete, and update.
   - See what happens when broadcasting is finished for Tasks.
+- [x] Turbo streams need to be reviewed. Every user can see others' updates / additions
+  - Found a way using Hotwire tutorial to keep category streams unique for each user.
+  - ```ruby
+      # Broadcast was updated to:
+      broadcasts_to ->(category) { [category.user, "categories"] }, inserts_by: :append
+
+      # Then I added current_user to the turbo_stream tag:
+      <%= turbo_stream_from current_user, "categories" %>
+    ```
 - [ ] Implement tests.
   - Install Google Chrome for Linux
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
@@ -121,7 +130,6 @@
   - Might want to reference accordion for fix.
 - [ ] Updates on task will broadcast replace and already open accordion.
   - Review the controller or just sign this off as a feature. omegalul
-- [ ] Turbo streams need to be reviewed. Every user can see others' updates / additions
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
