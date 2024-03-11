@@ -8,9 +8,9 @@
 - Postgres
 
 ## Project References:
-- [Hotwire Handbook]('https://hotwired.dev/')
-- [Hotrails Tutorial]('https://www.hotrails.dev/turbo-rails/turbo-streams')
-- [Issue #5: Updating Turbo-stream render template]('https://github.com/hotwired/turbo/pull/20')
+- [Hotwire Handbook](https://hotwired.dev/)
+- [Hotrails Tutorial](https://www.hotrails.dev/turbo-rails/turbo-streams)
+- [Issue #5: Updating Turbo-stream render template](https://github.com/hotwired/turbo/pull/20)
 
 ## User Stories
 - [x] I want to create a category that can be used to organize my tasks.
@@ -133,9 +133,12 @@
 - [ ] Feature to display task for today, tomorrow, or next week.
 - [ ] Updates on task will broadcast replace and already open accordion.
   - Review the controller or just sign this off as a feature. omegalul
+- [ ] Re route 404 errors
+  - Possible Resources:
+    - [Error Reroutes](https://reintech.io/blog/how-to-create-a-custom-error-page-in-rails)
 
 ## Issues Encountered
-1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow]('https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400').<br>
+1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow](https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400).<br>
    Fix was to place below code in `config/application.rb`
    ```ruby
    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
@@ -192,7 +195,7 @@
     }
   }
   ```
-  Not gonna lie, the connect code was mainly solved by prompts I gave chatGPT for how I can close the modal using jQuery. The idea that led to prompting AI for that question is noticing that if I place a `data-bs-dimiss = "modal` inside a button, I am able to close the modal itself. But I couldn't find a way to simulate having a button like that in stimulus. For the `submitEnd()` function, I found that out in this [YouTube Video]('https://www.youtube.com/watch?v=1QQ9j3z7NGw').
+  Not gonna lie, the connect code was mainly solved by prompts I gave chatGPT for how I can close the modal using jQuery. The idea that led to prompting AI for that question is noticing that if I place a `data-bs-dimiss = "modal` inside a button, I am able to close the modal itself. But I couldn't find a way to simulate having a button like that in stimulus. For the `submitEnd()` function, I found that out in this [YouTube Video](https://www.youtube.com/watch?v=1QQ9j3z7NGw).
 
   4. While testing ActionCable, and testing my understanding of turbo streams, I accidentally created an infinite loop of create. I was unable to close the server using Ctrl+C. Due to this, I was able to find a way to kill running rails servers by using the following:
   - `lsof -wni tcp:localhostPORT` to find the PID
