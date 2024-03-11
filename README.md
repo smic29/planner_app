@@ -115,6 +115,9 @@
       # Then I added current_user to the turbo_stream tag:
       <%= turbo_stream_from current_user, "categories" %>
     ```
+- [x] Category updates will reset the active category button
+  - Might want to reference accordion for fix.
+  - Fixed by adding a stimulus controller that listens for a `turbo:before-stream-render` event. It will then check if the stream target matches the div ID then will add classes from there. Code is in `app/javascript/controllers/categ_btn_controller`
 - [ ] Implement tests.
   - Install Google Chrome for Linux
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
@@ -126,8 +129,6 @@
   - Currently only working for sign in and sign out.
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Feature to display task for today, tomorrow, or next week.
-- [ ] Category updates will reset the active category button
-  - Might want to reference accordion for fix.
 - [ ] Updates on task will broadcast replace and already open accordion.
   - Review the controller or just sign this off as a feature. omegalul
 
