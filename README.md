@@ -123,6 +123,7 @@
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
   - Remove users? As per code review 3/9/24
+    - Rails error screen when going to `/users` path
 - [ ] Add validation for categories to be unique.
 - [ ] Do some pre-final style changes.
 - [ ] Fix notifications.
@@ -219,3 +220,9 @@
   }
   ```
   Basically, the controller listens for the turbo-stream before-render event then accesses the template included in that stream to update the necessary elements to keep the tab open.
+  6. Test issues:
+    - Since I'm running WSL, I experienced multiple issues, but these are the steps I've done:
+      - `sudo apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev`
+      - `sudo apt install libnss3`
+      - `sudo apt install -y chromium-browser`
+      - `sudo apt install chromium-chromedriver`
