@@ -121,15 +121,15 @@
 - [x] Implement tests.
   - See Issue #6 for installation in WSL
   - [x] System test for landing page.
+- [ ] Fix notifications.
+- [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
   - Remove users? As per code review 3/9/24
     - Rails error screen when going to `/users` path
 - [ ] Add validation for categories to be unique.
 - [ ] Do some pre-final style changes.
-- [ ] Fix notifications.
   - Currently only working for sign in and sign out.
-- [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Feature to display task for today, tomorrow, or next week.
 - [ ] Updates on task will broadcast replace and already open accordion.
   - Review the controller or just sign this off as a feature. omegalul
