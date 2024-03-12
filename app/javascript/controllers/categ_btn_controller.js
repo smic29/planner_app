@@ -20,11 +20,11 @@ export default class extends Controller {
       this.divTargets.forEach((div) => {
         if (turboStream.target == div.id) {
           const active_a = content.querySelector('a')
+          if (!active_a){
+            return
+          }
           const active_url = active_a.href.split('/').slice(-2).toString()
           const is_on_same_frame = active_url === current_frame_url
-          const is_on_diff_frame = active_url !== current_frame_url
-          console.log(`Frame: ${current_frame_url} || Button: ${active_url}`)
-          console.log(active_url === current_frame_url)
 
           if(!is_on_dash && is_on_same_frame ) {
             active_a.classList.remove('btn-outline-primary', 'link-dark')

@@ -4,7 +4,6 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="turbo-form"
 export default class extends Controller {
   connect() {
-    console.log('this is connected')
   }
 
   go(e) {
