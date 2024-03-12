@@ -1,5 +1,7 @@
 <%= turbo_frame_tag "edit_category" do %>
-    <%= form_with(model: @category, url: user_category_path(current_user, @category)) do |form| %>
+    <%= form_with(model: @category, url: user_category_path(current_user, @category), 
+                  data: { controller: "turbo-form", action: "turbo:submit-end->turbo-form#go"}
+                 ) do |form| %>
         <div class="d-grid gap-2">
             <div class="field form-floating">
                 <%= form.text_field :name, required:true, autocomplete:"off", class:"form-control", placeholder:"title" %>
