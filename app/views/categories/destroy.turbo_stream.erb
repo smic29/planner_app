@@ -1,1 +1,4 @@
 <%= turbo_stream.remove(@category) %>
+<%= turbo_stream.update("toasts") do %>
+    <%= render partial: "shared/toast" %>
+<% end %>

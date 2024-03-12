@@ -18,7 +18,12 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to category_tasks_path(@category), notice: 'Category was successfully updated.'
+      respond_to do |format|
+        format.html { redirect_to category_tasks_path(@category), notice: 'Category was successfully updated.' }
+        format.turbo_stream { flash.now[:notice] = "Category Updated"
+                              render turbo_stream: turbo_stream.update("toasts", partial: "shared/toast")
+                            }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -28,7 +33,7 @@ class CategoriesController < ApplicationController
     @category.destroy
 
     respond_to do |format|
-      format.turbo_stream
+      format.turbo_stream { flash.now[:notice] = "Category deleted" }
       format.html { redirect_to user_categories_path, notice: "Category was successfully deleted."}
     end
     # redirect_to user_categories_path, notice: 'Category was successfully deleted.'
@@ -43,7 +48,9 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.turbo_stream { render :create, locals: { category: @category }}
+        format.turbo_stream { flash.now[:notice] = "Category was successfully created"
+                              render :create, locals: { category: @category }
+                            }
         format.html { redirect_to user_categories_path, notice: "Category was successfully created."}
       else
         format.html { render :new, status: :unprocessable_entity }

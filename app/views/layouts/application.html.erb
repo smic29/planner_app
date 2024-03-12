@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <% if notice %>
-      <%= render 'shared/toast' %>
+    <% if flash %>
+      <div id="toasts">
+        <%= render 'shared/toast' %>
+      </div>
     <% end %>
   
     <%if user_signed_in? %>

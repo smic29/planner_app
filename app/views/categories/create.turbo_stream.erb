@@ -1,3 +1,6 @@
 <%= turbo_stream.append("categories") do %>
     <%= render partial: "categories/category", locals: { category: @category } %>
 <% end %>
+<%= turbo_stream.update("toasts") do %>
+    <%= render partial: "shared/toast" %>
+<% end %>
