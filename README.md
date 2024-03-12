@@ -121,7 +121,9 @@
 - [x] Implement tests.
   - See Issue #6 for installation in WSL
   - [x] System test for landing page.
-- [ ] Fix notifications.
+- [x] Fix notifications.
+  - [x] Done for categories
+  - [x] Done for user sign in and log out.
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
@@ -223,10 +225,39 @@
     }
   }
   ```
-  Basically, the controller listens for the turbo-stream before-render event then accesses the template included in that stream to update the necessary elements to keep the tab open.
+    - Basically, the controller listens for the turbo-stream before-render event then accesses the template included in that stream to update the necessary elements to keep the tab open.
+  
   6. Test issues:
     - Since I'm running WSL, I experienced multiple issues, but these are the steps I've done:
       - `sudo apt install libnss3-dev libgdk-pixbuf2.0-dev libgtk-3-dev libxss-dev`
       - `sudo apt install libnss3`
       - `sudo apt install -y chromium-browser`
       - `sudo apt install chromium-chromedriver`
+  
+  7. Form submit on within a turbo-frame:
+     - Had an issue arise with category edit form. Since it's within the index view of task, when I added a turbo stream respond on controller:
+        ```ruby
+          respond_to do |format|
+            format.html { redirect_to category_tasks_path(@category), notice: 'Category was   successfully updated.' }
+            format.turbo_stream { flash.now[:notice] = "Category Updated"
+                                    render turbo_stream: turbo_stream.update("toasts", partial: "shared/toast")
+                                  }
+          end
+        ```
+       - Submitting successfully would then not revert the turbo frame back to where it was. Thus, I added a stimulus controller that would refresh the frame based on the cancel link I had within the category edit view:
+      ```js
+      export default class extends Controller {
+        connect() {
+          console.log('this is connected')
+        }
+
+        go(e) {
+          if(e.detail.success) {
+            const frame = document.querySelector('#tasks_list')
+            const href = frame.querySelector('a')
+            frame.src = href.href
+          }
+        }
+      }
+      ```
+       - I feel like this process could be further improved, but for now (03/12/24) it works.
