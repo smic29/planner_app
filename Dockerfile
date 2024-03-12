@@ -20,7 +20,6 @@ FROM base as build
 # Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y build-essential git libpq-dev libvips pkg-config
-RUN apt-get update
 RUN apt-get install nodejs -y
 
 # Install application gems
