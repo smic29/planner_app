@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.hosts << ENV['DEVELOPMENT_HOSTS']
 
   # Code is not reloaded between requests.
   config.enable_reloading = false
@@ -25,7 +26,7 @@ Rails.application.configure do
 
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
   config.serve_static_files = true
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
