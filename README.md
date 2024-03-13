@@ -327,3 +327,6 @@ It's my first time deploying to railway with this project and I wasn't completel
      - At this point, I'm thinking that 512mb of memory is not enough for the project. 
      - I'll try to deploy to render and see it the same issue still happens.
      - Created a new branch for render deploy changes.
+       - Render deploy was much better. The only issue right now(from what I notice) is delete actions and edit on category?
+       - Category: UPDATE AND DELETE
+       - Task: DELETE
