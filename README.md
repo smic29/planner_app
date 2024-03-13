@@ -324,3 +324,5 @@ It's my first time deploying to railway with this project and I wasn't completel
      - Trying with broadcasts commented out:
        - It helped be able to do some other stuff, but updating category still crashed the site.
      - Issue could be with workers, possible memory leak?
+     - At this point, I'm thinking that 512mb of memory is not enough for the project. 
+     - I'll try to deploy to render and see it the same issue still happens.
