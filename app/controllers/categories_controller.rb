@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to category_tasks_path(@category), notice: 'Category was successfully updated.' }
         format.turbo_stream { flash.now[:notice] = "Category Updated"
-                              render turbo_stream: turbo_stream.update("toasts", partial: "shared/toast")
+
                             }
       end
     else
