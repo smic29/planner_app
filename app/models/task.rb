@@ -7,7 +7,7 @@ class Task < ApplicationRecord
 
   broadcasts_to ->(task) { "tasks" }, inserts_by: :append
   after_create_commit -> {
-    broadcast_replace_to "categories",
+    broadcast_replace_later_to "categories",
     target: self.category,
     partial: "categories/category",
     locals: { category: self.category }
@@ -19,7 +19,7 @@ class Task < ApplicationRecord
     locals: { category: self.category }
   }
   after_update_commit -> {
-    broadcast_replace_to [ category.user, "categories"],
+    broadcast_replace_later_to [ category.user, "categories"],
     target: self.category,
     partial: "categories/category",
     locals: { category: self.category }
