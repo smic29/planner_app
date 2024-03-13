@@ -1,5 +1,10 @@
 # Planner App
 
+## Current Deploy:
+- [Planner App](https://plannerapp-production.up.railway.app/)
+  - Currently has following issues
+    - Delete will cause workers to crash as per railway logs.
+
 ## Made with:
 - Ruby
 - Ruby on Rails
@@ -261,3 +266,57 @@
       }
       ```
        - I feel like this process could be further improved, but for now (03/12/24) it works.
+
+## Deployment Process
+This app is currently deployed in railway.app
+
+### Resources
+- [Youtube Tutorial](https://www.youtube.com/watch?v=PsS0bF_xmXQ)
+- [Issue # 1](https://github.com/rails/rails/issues/32947#issuecomment-470380517)
+- [Issue # 2](https://stackoverflow.com/questions/6282307/execjs-and-could-not-find-a-javascript-runtime)
+
+### Issues Encountered on build and deploy
+It's my first time deploying to railway with this project and I wasn't completely comfortable with the process. That being said, there were many issues and errors that happened during the build and deploy processes.
+
+1. secret_key_base / master key issue on assets:precompile
+     - Since railway.app will automatically detect a Dockerfile that's inside the project, the first build issue I experienced was it being unable to proceed with `rails assets:precompile` due to not being able to find (or resolve?) the secret key base. I fixed this issue using this code (see resources for link):
+  ```docker
+  RUN if [[ "$RAILS_ENV" == "production" ]]; then \
+      mv config/credentials.yml.enc config/credentials.yml.enc.backup; \
+      mv config/credentials.yml.enc.sample config/credentials.yml.enc; \
+      mv config/master.key.sample config/master.key; \
+      bundle exec rails assets:precompile; \
+      mv config/credentials.yml.enc.backup config/credentials.yml.enc; \
+      rm config/master.key; \
+    fi
+  ```
+2. Execjs:Runtime issue
+   - After the build process was able to go pass `assets:precompile` the second issue was execjs being unable to execute a proper runtime.
+   - Based on my understanding, this was caused by the server container not having access to nodejs, so this issue was resolved by adding the following to my `Dockerfile`:
+   - `RUN apt-get install nodejs -y`
+
+3. Asset Pipeline not being able to locate application.css
+   - This issue caused a lot of headaches since I can't seem to pinpoint what exactly causes the issue. The railway.app log shows that application.css cannot be found in the assets pipeline, but since I'm using the bootstrap gem, my stylesheets use the `.scss` extension.
+   - The first few fixes I tried revolved around the edit of `manifest.js` and `application.scss`, by removing any `*=` on the `.scss` file and adding `//= link application.css` to the manifest. But these weren't enough to resolve the issue.
+   - What ultimately led to resolving it, though, was adding the miniracer gem to my gemfile: `gem 'mini_racer', platforms: :ruby`
+     - I have no idea how this fixed it, but this was a recommendation that I saw upon endless Google searching.
+
+4. Server crashes
+   - At this point, the site is deployed, but now the issue arised wherein my broadcasts were causing the workers(I think?) to die. See this railway deploy log:
+   ```
+    [73] ! Detected parent died, dying
+    [186] ! Detected parent died, dying
+    [392] ! Detected parent died, dying
+    [301] ! Detected parent died, dying
+    [202] ! Detected parent died, dying
+    [172] ! Detected parent died, dying
+   ```
+   - This would then cause the server to enter a loop of crashing then trying to boot up again while the server is still running:
+   ```
+    A server is already running (pid: 7, file: /rails/tmp/pids/server.pid).
+    => Booting Puma
+    => Rails 7.1.3.2 application starting in production
+    => Run `bin/rails server --help` for more startup options
+    Exiting
+   ```
+   - I thought updating my broadcasts to do asynchronous operations would fix this, but I found that the delete/destroy action still triggers this case. As of 03/13/24, this is still the issue.   
