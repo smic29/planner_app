@@ -319,4 +319,6 @@ It's my first time deploying to railway with this project and I wasn't completel
     => Run `bin/rails server --help` for more startup options
     Exiting
    ```
-   - I thought updating my broadcasts to do asynchronous operations would fix this, but I found that the delete/destroy action still triggers this case. As of 03/13/24, this is still the issue.   
+   - I thought updating my broadcasts to do asynchronous operations would fix this, but I found that the delete/destroy action still triggers this case. As of 03/13/24, this is still the issue.
+     - Happens on Category delete, and creating two consecutive tasks.
+     - Trying with broadcasts commented out:   
