@@ -328,5 +328,5 @@ It's my first time deploying to railway with this project and I wasn't completel
      - I'll try to deploy to render and see it the same issue still happens.
      - Created a new branch for render deploy changes.
        - Render deploy was much better. The only issue right now(from what I notice) is delete actions and edit on category?
-       - Category: UPDATE AND DELETE
+       - Category: DELETE
        - Task: DELETE
