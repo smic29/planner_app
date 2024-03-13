@@ -326,3 +326,4 @@ It's my first time deploying to railway with this project and I wasn't completel
      - Issue could be with workers, possible memory leak?
      - At this point, I'm thinking that 512mb of memory is not enough for the project. 
      - I'll try to deploy to render and see it the same issue still happens.
+     - Created a new branch for render deploy changes.
