@@ -5,10 +5,10 @@ class Category < ApplicationRecord
   validates :name, presence: true
 
   broadcasts_to ->(category) { [category.user, "categories"] }, inserts_by: :append
-  after_update_commit -> {
-    broadcast_replace_later_to [ category.user, "categories"],
-    partial: "categories/category",
-    locals: { category: self, tasks: Task }, target: "categories" }
+  # after_update_commit -> {
+  #   broadcast_replace_later_to [self.user, "categories"],
+  #   partial: "categories/category",
+  #   locals: { category: self }, target: "categories" }
 
   def task_count
     tasks.where('finish_by = ?', Date.today.beginning_of_day).count
