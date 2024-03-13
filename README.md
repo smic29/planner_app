@@ -321,4 +321,6 @@ It's my first time deploying to railway with this project and I wasn't completel
    ```
    - I thought updating my broadcasts to do asynchronous operations would fix this, but I found that the delete/destroy action still triggers this case. As of 03/13/24, this is still the issue.
      - Happens on Category delete, and creating two consecutive tasks.
-     - Trying with broadcasts commented out:   
+     - Trying with broadcasts commented out:
+       - It helped be able to do some other stuff, but updating category still crashed the site.
+     - Issue could be with workers, possible memory leak?
