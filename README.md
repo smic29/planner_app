@@ -1,4 +1,5 @@
 # Planner App
+THIS IS THE RAILWAY DEPLOY BRANCH. IT CURRENTLY HAS CRASH ISSUES.
 
 ## Current Deploy:
 - [Planner App](https://plannerapp-production.up.railway.app/)
