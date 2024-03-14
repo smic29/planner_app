@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validate :finish_by_in_future
 
-  Commented out until I find a way to implement broadcasts
+  # Commented out until I find a way to implement broadcasts
   broadcasts_to ->(task) { "tasks" }, inserts_by: :append
   after_create_commit -> {
     broadcast_replace_later_to "categories",

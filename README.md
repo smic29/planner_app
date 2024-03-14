@@ -33,6 +33,7 @@ This app is currently deployed in railway(unstable) and render(stable)
 
 ### Resources
 - [Youtube Tutorial](https://www.youtube.com/watch?v=PsS0bF_xmXQ)
+- [Rails Guide: ActionCable](https://guides.rubyonrails.org/action_cable_overview.html)
 - [Issue # 1](https://github.com/rails/rails/issues/32947#issuecomment-470380517)
 - [Issue # 2](https://stackoverflow.com/questions/6282307/execjs-and-could-not-find-a-javascript-runtime)
 
