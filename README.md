@@ -2,7 +2,7 @@
 
 ## Current Deploy:
 - [Planner App(Render)](https://planner-app-elox.onrender.com/)
-  - Stable but doesn't have ActionCable functionality yet.
+  - Full functionality.
 
 ## Made with:
 - Ruby
