@@ -8,19 +8,19 @@ class Task < ApplicationRecord
   # Commented out until I find a way to implement broadcasts
   broadcasts_to ->(task) { "tasks" }, inserts_by: :append
   after_create_commit -> {
-    broadcast_replace_later_to "categories",
+    broadcast_replace_later_to [ self.user, "categories"],
     target: self.category,
     partial: "categories/category",
     locals: { category: self.category }
   }
   after_destroy_commit -> {
-    broadcast_replace_to "categories",
+    broadcast_replace_to [ self.user, "categories"],
     target: self.category,
     partial: "categories/category",
     locals: { category: self.category }
   }
   after_update_commit -> {
-    broadcast_replace_later_to [ category.user, "categories"],
+    broadcast_replace_later_to [ self.user, "categories"],
     target: self.category,
     partial: "categories/category",
     locals: { category: self.category }
