@@ -1,9 +1,10 @@
 # Planner App
 
 ## Current Deploy:
-- [Planner App](https://plannerapp-production.up.railway.app/)
-  - Currently has following issues
-    - Delete will cause workers to crash as per railway logs.
+- [Planner App(Railway)](https://plannerapp-production.up.railway.app/)
+  - Currently unstable and frequently crashes.
+- [Planner App(Render)](https://planner-app-elox.onrender.com/)
+  - Stable but doesn't have ActionCable functionality yet.
 
 ## Made with:
 - Ruby
@@ -143,6 +144,7 @@
 - [ ] Re route 404 errors
   - Possible Resources:
     - [Error Reroutes](https://reintech.io/blog/how-to-create-a-custom-error-page-in-rails)
+- [ ] Fix production ActionCables
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow](https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400).<br>
@@ -268,7 +270,7 @@
        - I feel like this process could be further improved, but for now (03/12/24) it works.
 
 ## Deployment Process
-This app is currently deployed in railway.app
+This app is currently deployed in railway(unstable) and render(stable)
 
 ### Resources
 - [Youtube Tutorial](https://www.youtube.com/watch?v=PsS0bF_xmXQ)
@@ -290,6 +292,9 @@ It's my first time deploying to railway with this project and I wasn't completel
       rm config/master.key; \
     fi
   ```
+      
+ - The fix for render was far simpler by just adding a variable on the blueprint. `SECRET_KEY_BASE` 
+
 2. Execjs:Runtime issue
    - After the build process was able to go pass `assets:precompile` the second issue was execjs being unable to execute a proper runtime.
    - Based on my understanding, this was caused by the server container not having access to nodejs, so this issue was resolved by adding the following to my `Dockerfile`:
@@ -327,6 +332,10 @@ It's my first time deploying to railway with this project and I wasn't completel
      - At this point, I'm thinking that 512mb of memory is not enough for the project. 
      - I'll try to deploy to render and see it the same issue still happens.
      - Created a new branch for render deploy changes.
-       - Render deploy was much better. The only issue right now(from what I notice) is delete actions and edit on category?
-       - Category: DELETE & Update(not updating category list.)
-       - Task: DELETE
+       - Render deploy was successful and is currently (03/14/24) the more stable deploy. Although it still doesn't have the ActionCable functionality that I really wanted to showcase.
+
+
+### What I've learned throughout the deployment process:
+   - The issue could be because of ActionCables. I'll come back to railway after studying ActionCable and websockets a bit more.
+   - Making the app fully integrated with Hotwire should be the first priority before thinking about enabling broadcasts.
+     - Making sure turbo_stream responses were operational first made the render deploy very stable.
