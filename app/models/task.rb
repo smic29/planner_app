@@ -5,26 +5,26 @@ class Task < ApplicationRecord
   validates :title, presence: true
   validate :finish_by_in_future
 
-  # Commented out until I find a way to implement broadcasts
-  # broadcasts_to ->(task) { "tasks" }, inserts_by: :append
-  # after_create_commit -> {
-  #   broadcast_replace_later_to "categories",
-  #   target: self.category,
-  #   partial: "categories/category",
-  #   locals: { category: self.category }
-  # }
-  # after_destroy_commit -> {
-  #   broadcast_replace_to "categories",
-  #   target: self.category,
-  #   partial: "categories/category",
-  #   locals: { category: self.category }
-  # }
-  # after_update_commit -> {
-  #   broadcast_replace_later_to [ category.user, "categories"],
-  #   target: self.category,
-  #   partial: "categories/category",
-  #   locals: { category: self.category }
-  # }
+  Commented out until I find a way to implement broadcasts
+  broadcasts_to ->(task) { "tasks" }, inserts_by: :append
+  after_create_commit -> {
+    broadcast_replace_later_to "categories",
+    target: self.category,
+    partial: "categories/category",
+    locals: { category: self.category }
+  }
+  after_destroy_commit -> {
+    broadcast_replace_to "categories",
+    target: self.category,
+    partial: "categories/category",
+    locals: { category: self.category }
+  }
+  after_update_commit -> {
+    broadcast_replace_later_to [ category.user, "categories"],
+    target: self.category,
+    partial: "categories/category",
+    locals: { category: self.category }
+  }
 
   def finish_by_in_future
     return if finish_by.blank? || finish_by >= Date.today

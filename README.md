@@ -46,3 +46,8 @@ This is the most stable deploy of this project. Although the main feature, which
    - Broadcasts with ActionCables is still quite difficult with free plans.
    - I think I'd need to get a hobby plan then add a redis instance?
      - Still studying what I could do about this, thus I kept the broadcast code commented out.
+   - Currently working by utilizing render as the main view deploy and an instance of redis in railway.app
+
+### How I made Action cable work
+  - The first thing required is having a redis instance, which luckily I had since I tried to first deploy this project on railway.app. Using the REDIS_URL variable in railway, I added an environment variable in render under the same name.
+  - After the REDIS_URL variable was set, I made sure that the production url for `cable.yml` was set to the same variable.
