@@ -131,6 +131,8 @@
 - [x] Fix notifications.
   - [x] Done for categories
   - [x] Done for user sign in and log out.
+- [x] Fix production ActionCables
+  - Was fixed by using a redis instance provided by railway 
 - [ ] Find a way to post a patch request after checking a checkbox.
 - [ ] Find way to have user switch to a task to a different category if they want to delete a category
 - [ ] Do a check of all routes that aren't needed
@@ -145,7 +147,6 @@
 - [ ] Re route 404 errors
   - Possible Resources:
     - [Error Reroutes](https://reintech.io/blog/how-to-create-a-custom-error-page-in-rails)
-- [ ] Fix production ActionCables
 
 ## Issues Encountered
 1. Invalid form inputs will cover the inputs in `divs.field_with_errors`. Found a fix here: [Stack Overflow](https://stackoverflow.com/questions/5267998/rails-3-field-with-errors-wrapper-changes-the-page-appearance-how-to-avoid-t/8380400#8380400).<br>
