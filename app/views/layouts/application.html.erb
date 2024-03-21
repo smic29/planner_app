@@ -25,14 +25,14 @@
     <%= render 'shared/signed_in_modal' %>
     <main class="container-fluid mt-4">
       <div class="row">
-        <div class="col-3">
+        <div class="col-lg-3 mb-3">
           <%= turbo_frame_tag "category_list", src: user_categories_path(current_user.id) do %>
           <div>
             
           </div>
           <% end %>
         </div>
-        <div class="col-9">
+        <div class="col-lg-9">
           <%= turbo_frame_tag "tasks_list", src: dashboard_path do %>
             <div class="container shadow p-3 rounded">
               Select a Category to display your tasks!
