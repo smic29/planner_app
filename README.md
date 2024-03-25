@@ -15,6 +15,9 @@
 - [x] Added an animated background for some added design.
 - [ ] Add social icons and links when hovering footer.
 
+## Bugs
+- Animation is not visible on larger screen widths.
+
 ## Resources
 - [Animated Backgrounds](https://animatedbackgrounds.me/)
 
