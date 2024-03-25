@@ -11,6 +11,27 @@ footer {
         font-weight: bold;
     }
 
+    div {
+        position: relative;
+        display: none;
+        flex-direction: column;
+        text-align: left;
+        justify-content: center;
+        top: 50%;
+        transform: translateY(-50%);
+        padding-left: 1rem;
+
+        span {
+            color: whitesmoke;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+            a {
+                text-decoration: underline;
+                color: whitesmoke;
+            }
+        }
+    }
+
     svg {
 		position: absolute;
 		top: 0;
@@ -27,11 +48,16 @@ footer {
     transition: height 0.7s linear;
 
     &:hover {
-        height: 15vh;
+        height: 20vh;
 
         span {
             top: 50%;
             transition: top 0.7s ease-in-out;
+        }
+
+        div {
+            display: flex;
+            transition: opacity 0.7s ease-in-out;
         }
     }
 }
