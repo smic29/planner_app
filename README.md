@@ -15,6 +15,9 @@
 - [x] Added an animated background for some added design.
 - [ ] Add social icons and links when hovering footer.
 
+## Resources
+- [Animated Backgrounds](https://animatedbackgrounds.me/)
+
 ## Issues Encountered
 1. SASS changes not being automatically seen in development.
    - [css files not updating with rails 7](https://www.reddit.com/r/rails/comments/12xlnxg/css_files_not_updating_with_rails_7/)
