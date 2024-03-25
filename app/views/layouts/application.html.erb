@@ -6,7 +6,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   
   </head>
@@ -48,6 +48,12 @@
     </main>
     <%= render 'shared/modal' %>
     <% end %>
+    <footer>
+      <%= render 'shared/footer' %>
+      <span>
+        &copy; 2024 <a href="https://github.com/smic29">Spicy</a>
+      </span>
+    </footer>
     <script>
       $('.toast').toast('show');
     </script>
